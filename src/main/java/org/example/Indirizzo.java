@@ -1,3 +1,5 @@
+package org.example;
+
 public class Indirizzo {
     private String via;
     private String numeroCivico;

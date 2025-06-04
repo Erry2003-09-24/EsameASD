@@ -1,3 +1,5 @@
+package org.example;
+
 public class Cliente {
     private String codiceCliente;
     private String nome;
