@@ -5,7 +5,7 @@ public class Indirizzo {
     private String numeroCivico;
     private String cap;
     private String citta;
-    private String provincia;
+    private String provincia; // provincia per indirizzo
 
     public Indirizzo(String via, String numeroCivico, String cap, String citta, String provincia) {
         this.via = via;
