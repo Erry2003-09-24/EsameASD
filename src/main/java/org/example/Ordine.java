@@ -7,7 +7,7 @@ public class Ordine {
     private int numeroOrdine; //numero ordine
     private String codiceCliente;
     private List<Pizza> pizze;
-    private double totale; // totale prezzo da pagare
+    private double totale;
     private StatoOrdine stato;
     private LocalDateTime dataOra;
 
