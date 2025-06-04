@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Ordine {
-    private int numeroOrdine;
+    private int numeroOrdine; //numero ordine
     private String codiceCliente;
     private List<Pizza> pizze;
     private double totale;
