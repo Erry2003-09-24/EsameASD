@@ -1,0 +1,33 @@
+name: Build Java App with Docker
+
+on:
+  push:
+    branches:
+      - automated_software_delivery-2025
+  pull_request:
+    branches:
+      - automated_software_delivery-2025
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java and Maven
+        uses: actions/setup-java@v4
+        with:
+          java-version: '24'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build Java application with Maven
+        run: mvn -B package --file pom.xml
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image with Docker Compose
+        run: docker-compose build esame-app
