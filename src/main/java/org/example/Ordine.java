@@ -24,8 +24,40 @@ public class Ordine {
         return numeroOrdine;
     }
 
+    public void setNumeroOrdine(int numeroOrdine) {
+        this.numeroOrdine = numeroOrdine;
+    }
+
+    public String getCodiceCliente() {
+        return codiceCliente;
+    }
+
+    public void setCodiceCliente(String codiceCliente) {
+        this.codiceCliente = codiceCliente;
+    }
+
+    public List<Pizza> getPizze() {
+        return pizze;
+    }
+
+    public void setPizze(List<Pizza> pizze) {
+        this.pizze = pizze;
+    }
+
+    public StatoOrdine getStato() {
+        return stato;
+    }
+
     public void setStato(StatoOrdine stato) {
         this.stato = stato;
+    }
+
+    public LocalDateTime getDataOra() {
+        return dataOra;
+    }
+
+    public void setDataOra(LocalDateTime dataOra) {
+        this.dataOra = dataOra;
     }
 
     @Override

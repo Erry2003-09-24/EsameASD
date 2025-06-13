@@ -7,7 +7,7 @@ public class Pizza {
     private List<String> ingredienti;
     private double prezzo;
 
-    public Pizza(String nome, List<String> ingredienti, double prezzo) {
+    public Pizza(String nome, double prezzo) {
         this.nome = nome;
         this.ingredienti = ingredienti;
         this.prezzo = prezzo;
@@ -17,8 +17,24 @@ public class Pizza {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public double getPrezzo() {
         return prezzo;
+    }
+
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public List<String> getIngredienti() {
+        return ingredienti;
+    }
+
+    public void setIngredienti(List<String> ingredienti) {
+        this.ingredienti = ingredienti;
     }
 
     @Override

@@ -11,9 +11,9 @@ public class Main {
 
     public static void main(String[] args) {
         clienti.add(new Cliente("C001", "Mario", "Rossi", "3331234567",
-                new Indirizzo("Via Roma", "10", "00100", "Roma", "RM")));
+                new Indirizzo("Via Roma", "10", "00100", "Roma")));
         clienti.add(new Cliente("C002", "Luca", "Bianchi", "3337654321",
-                new Indirizzo("Via Milano", "5", "20100", "Milano", "MI")));
+                new Indirizzo("Via Milano", "5", "20100", "Milano")));
 
         boolean running = true;
         while (running) {
@@ -50,7 +50,7 @@ public class Main {
         System.out.print("Prezzo: ");
         double prezzo = Double.parseDouble(scanner.nextLine());
 
-        Pizza pizza = new Pizza(nome, ingredienti, prezzo);
+        Pizza pizza = new Pizza(nome, prezzo);
         pizze.add(pizza);
         System.out.println("Pizza inserita.");
     }
