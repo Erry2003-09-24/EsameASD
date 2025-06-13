@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Ordine {
-    private int numeroOrdine; //numero ordine
+    private int numeroOrdine;
     private String codiceCliente;
     private List<Pizza> pizze;
     private double totale;
@@ -15,9 +15,16 @@ public class Ordine {
         this.numeroOrdine = numeroOrdine;
         this.codiceCliente = codiceCliente;
         this.pizze = pizze;
-        this.totale = pizze.stream().mapToDouble(Pizza::getPrezzo).sum();
+        this.totale = calculateTotale(pizze);
         this.stato = StatoOrdine.IN_PREPARAZIONE;
         this.dataOra = LocalDateTime.now();
+    }
+
+    private double calculateTotale(List<Pizza> pizze) {
+        if (pizze == null) {
+            return 0.0;
+        }
+        return pizze.stream().mapToDouble(Pizza::getPrezzo).sum();
     }
 
     public int getNumeroOrdine() {
@@ -42,6 +49,11 @@ public class Ordine {
 
     public void setPizze(List<Pizza> pizze) {
         this.pizze = pizze;
+        this.totale = calculateTotale(pizze);
+    }
+
+    public double getTotale() {
+        return totale;
     }
 
     public StatoOrdine getStato() {
@@ -69,8 +81,10 @@ public class Ordine {
                 .append("\nStato: ").append(stato)
                 .append("\nTotale: €").append(String.format("%.2f", totale))
                 .append("\nPizze ordinate:\n");
-        for (Pizza p : pizze) {
-            sb.append("  - ").append(p).append("\n");
+        if (pizze != null) {
+            for (Pizza p : pizze) {
+                sb.append("  - ").append(p).append("\n");
+            }
         }
         return sb.toString();
     }

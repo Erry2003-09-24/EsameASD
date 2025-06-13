@@ -1,16 +1,23 @@
 package org.example;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Pizza {
     private String nome;
     private List<String> ingredienti;
     private double prezzo;
 
-    public Pizza(String nome, double prezzo) {
+    // Costruttore completo
+    public Pizza(String nome, List<String> ingredienti, double prezzo) {
         this.nome = nome;
-        this.ingredienti = ingredienti;
+        this.ingredienti = ingredienti != null ? ingredienti : new ArrayList<>();
         this.prezzo = prezzo;
+    }
+
+    // Costruttore solo con nome e prezzo, ingredienti vuoti
+    public Pizza(String nome, double prezzo) {
+        this(nome, new ArrayList<>(), prezzo);
     }
 
     public String getNome() {
@@ -34,7 +41,7 @@ public class Pizza {
     }
 
     public void setIngredienti(List<String> ingredienti) {
-        this.ingredienti = ingredienti;
+        this.ingredienti = ingredienti != null ? ingredienti : new ArrayList<>();
     }
 
     @Override
