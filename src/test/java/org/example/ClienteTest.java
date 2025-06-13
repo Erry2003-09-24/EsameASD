@@ -7,7 +7,7 @@ public class ClienteTest {
 
     @Test
     public void testGetCodiceCliente() {
-        Indirizzo indirizzo = new Indirizzo("Via Roma", "10", "00100", "Roma");
+        Indirizzo indirizzo = new Indirizzo("Via Roma", "10", "00100", "Roma", "RM");
         Cliente cliente = new Cliente("C123", "Mario", "Rossi", "1234567890", indirizzo);
 
         assertEquals("C123", cliente.getCodiceCliente());
@@ -15,7 +15,7 @@ public class ClienteTest {
 
     @Test
     public void testToString() {
-        Indirizzo indirizzo = new Indirizzo("Via Roma", "10", "00100", "Roma");
+        Indirizzo indirizzo = new Indirizzo("Via Roma", "10", "00100", "Roma", "RM");
         Cliente cliente = new Cliente("C123", "Mario", "Rossi", "1234567890", indirizzo);
 
         String expected = "C123: Mario Rossi, Tel: 1234567890, Indirizzo: " + indirizzo.toString();

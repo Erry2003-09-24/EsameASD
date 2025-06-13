@@ -11,9 +11,9 @@ public class Main {
 
     public static void main(String[] args) {
         clienti.add(new Cliente("C001", "Mario", "Rossi", "3331234567",
-                new Indirizzo("Via Roma", "10", "00100", "Roma")));
+                new Indirizzo("Via Roma", "10", "00100", "Roma", "RM")));
         clienti.add(new Cliente("C002", "Luca", "Bianchi", "3337654321",
-                new Indirizzo("Via Milano", "5", "20100", "Milano")));
+                new Indirizzo("Via Milano", "5", "20100", "Milano", "MI")));
 
         boolean running = true;
         while (running) {
