@@ -1,5 +1,6 @@
 package org.example;
 
+// Classe che definisce il cliente che effettua l'ordine
 public class Cliente {
     private String codiceCliente;
     private String nome;
