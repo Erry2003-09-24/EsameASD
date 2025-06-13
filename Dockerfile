@@ -1,11 +1,26 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:24-jdk-slim
+# Stage 1: Build con Java 24 e Maven
+FROM eclipse-temurin:24-jdk AS build
 
-# Set the working directory in the container
+# Installa Maven
+RUN apt-get update && apt-get install -y maven
+
 WORKDIR /app
 
-# Copy the Maven-generated JAR file from your target directory into the container
-COPY target/Esame_Automated_Software_Delivery-1.0-SNAPSHOT.jar app.jar
+# Copia solo il pom per caching delle dipendenze
+COPY pom.xml .
+RUN mvn dependency:go-offline
 
-# Define the command to run your application
+# Copia il resto del progetto
+COPY src /app/src
+
+# Compila il progetto
+RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime
+FROM eclipse-temurin:24-jre
+
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+
+# Comando per avviare l'app (adatta il nome JAR se necessario)
 ENTRYPOINT ["java", "-jar", "app.jar"]
