@@ -2,51 +2,63 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PizzaTest {
 
     @Test
-    void testCostruttoreInizializzaNomeEPrezzo() {
-        Pizza pizza = new Pizza("Margherita", 5.0);
+    void testCostruttoreCompleto() {
+        List<String> ingredienti = List.of("pomodoro", "mozzarella", "basilico");
+        Pizza pizza = new Pizza("Margherita", ingredienti, 5.0);
+
         assertEquals("Margherita", pizza.getNome());
         assertEquals(5.0, pizza.getPrezzo());
-        assertNull(pizza.getIngredienti());
+        assertEquals(ingredienti, pizza.getIngredienti());
     }
 
     @Test
-    void testSettersEGetters() {
-        Pizza pizza = new Pizza("Margherita", 5.0);
+    void testCostruttoreNomePrezzo() {
+        Pizza pizza = new Pizza("Diavola", 7.5);
 
-        pizza.setNome("Diavola");
         assertEquals("Diavola", pizza.getNome());
-
-        pizza.setPrezzo(7.5);
         assertEquals(7.5, pizza.getPrezzo());
+        assertNotNull(pizza.getIngredienti());
+        assertTrue(pizza.getIngredienti().isEmpty());
+    }
 
-        List<String> ingredienti = List.of("pomodoro", "mozzarella", "salame piccante");
+    @Test
+    void testSettersAndGetters() {
+        Pizza pizza = new Pizza("Funghi", 6.0);
+
+        pizza.setNome("Quattro Stagioni");
+        assertEquals("Quattro Stagioni", pizza.getNome());
+
+        pizza.setPrezzo(8.5);
+        assertEquals(8.5, pizza.getPrezzo());
+
+        List<String> ingredienti = new ArrayList<>();
+        ingredienti.add("funghi");
+        ingredienti.add("prosciutto");
         pizza.setIngredienti(ingredienti);
         assertEquals(ingredienti, pizza.getIngredienti());
     }
 
     @Test
-    void testToStringConIngredienti() {
-        Pizza pizza = new Pizza("Margherita", 5.0);
-        pizza.setIngredienti(List.of("pomodoro", "mozzarella"));
+    void testToString() {
+        List<String> ingredienti = List.of("pomodoro", "mozzarella");
+        Pizza pizza = new Pizza("Margherita", ingredienti, 5.0);
 
-        String descrizione = pizza.toString();
-        assertTrue(descrizione.contains("Margherita"));
-        assertTrue(descrizione.contains("pomodoro"));
-        assertTrue(descrizione.contains("mozzarella"));
-        assertTrue(descrizione.contains("€5.0") || descrizione.contains("€5.00"));
+        String expected = "Margherita (pomodoro, mozzarella) - €5.0";
+        assertEquals(expected, pizza.toString());
     }
 
     @Test
-    void testToStringConIngredientiNull() {
-        Pizza pizza = new Pizza("Margherita", 5.0);
-        pizza.setIngredienti(null);
+    void testToStringIngredientiVuoti() {
+        Pizza pizza = new Pizza("Bianca", 4.5);
 
-        assertThrows(NullPointerException.class, pizza::toString);
+        String expected = "Bianca () - €4.5";
+        assertEquals(expected, pizza.toString());
     }
 }
