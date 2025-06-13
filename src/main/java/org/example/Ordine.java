@@ -3,6 +3,7 @@ package org.example;
 import java.time.LocalDateTime;
 import java.util.List;
 
+// Classe che rappresenta un ordine
 public class Ordine {
     private int numeroOrdine;
     private String codiceCliente;
