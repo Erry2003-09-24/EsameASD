@@ -29,6 +29,9 @@ jobs:
       - name: Build Java application with Maven
         run: mvn -B package --file pom.xml
 
+      - name: Export Docker username to environment
+        run: echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> $GITHUB_ENV
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -41,5 +44,4 @@ jobs:
       - name: Build and push Docker image with Docker Compose
         run: |
           docker compose build esame-app
-          docker tag esame-app:latest ${{ secrets.DOCKER_USERNAME }}/esame-app:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/esame-app:latest
+          docker compose push esame-app
