@@ -1,5 +1,6 @@
 package org.example;
 
+// Enumerazione stati dell'ordine
 public enum StatoOrdine {
     IN_PREPARAZIONE,
     PRONTO,
