@@ -22,5 +22,5 @@ FROM eclipse-temurin:24-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
-# Comando per avviare l'app (adatta il nome JAR se necessario)
+# Comando per avviare l'app
 ENTRYPOINT ["java", "-jar", "app.jar"]
