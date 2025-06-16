@@ -3,6 +3,7 @@ package org.example;
 import java.util.List;
 import java.util.ArrayList;
 
+// Class for represent a Pizza
 public class Pizza {
     private String nome;
     private List<String> ingredienti;
