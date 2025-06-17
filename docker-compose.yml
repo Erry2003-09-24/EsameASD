@@ -1,8 +1,17 @@
+# versione sintassi docker-compose
 version: '3.8'
 
+# definisce i container da avviare
 services:
+  # nome del servizio
   esame-app:
+    # costruisce l'immagine docker partendo dal Dockerfile (nella directory corrente)
     build: .
+
+    # imposta il nome del container docker
     container_name: esame-app-container
+    # mantiene aperto lo standard input
     stdin_open: true
+
+    # permette al container di gestire input e output come un vero terminale
     tty: true
